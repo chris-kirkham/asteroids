@@ -1,28 +1,34 @@
 ﻿using UnityEngine;
 
-public class AsteroidMovement : MonoBehaviour
+namespace Game
 {
-    [SerializeField] [Min(0)] private float moveSpeed;
-
-    private Vector2 moveDirection;
-
-    private void Awake()
+    /// <summary>
+    /// Moves an asteroid at a constant speed in a random direction (determined on startup) 
+    /// </summary>
+    public class AsteroidMovement : MonoBehaviour
     {
-        moveDirection = GetRandomInitialMoveDirection();
-    }
+        [SerializeField] [Min(0)] private float moveSpeed;
 
-    private void Update()
-    {
-        ApplyMove();
-    }
+        private Vector2 moveDirection;
 
-    private void ApplyMove()
-    {
-        transform.position += (Vector3)moveDirection.normalized * moveSpeed * Time.deltaTime;
-    }
+        private void Awake()
+        {
+            moveDirection = GetRandomInitialMoveDirection();
+        }
 
-    private Vector2 GetRandomInitialMoveDirection()
-    {
-        return Quaternion.AngleAxis(Random.Range(0f, 360f), Vector3.forward) * Vector2.right;
+        private void Update()
+        {
+            ApplyMove();
+        }
+
+        private void ApplyMove()
+        {
+            transform.position += (Vector3)moveDirection.normalized * moveSpeed * Time.deltaTime;
+        }
+
+        private Vector2 GetRandomInitialMoveDirection()
+        {
+            return Quaternion.AngleAxis(Random.Range(0f, 360f), Vector3.forward) * Vector2.right;
+        }
     }
 }

@@ -73,14 +73,43 @@
     <Compile Include="Assets\Scripts\Game\DamageSystem\IKillable.cs" />
     <Compile Include="Assets\Scripts\Game\Enemies\Asteroid\AsteroidHealth.cs" />
     <Compile Include="Assets\Scripts\Game\Enemies\Asteroid\AsteroidMovement.cs" />
-    <Compile Include="Assets\Scripts\Game\Player\PlayerAbilities\Projectile.cs" />
-    <Compile Include="Assets\Scripts\Game\Player\PlayerAbilities\ProjectileAction.cs" />
+    <Compile Include="Assets\Scripts\Game\Enemies\Asteroid\Splitter.cs" />
+    <Compile Include="Assets\Scripts\Game\Player\PlayerAbilities\ProjectileAbility\Projectile.cs" />
+    <Compile Include="Assets\Scripts\Game\Player\PlayerAbilities\ProjectileAbility\ProjectileAction.cs" />
+    <Compile Include="Assets\Scripts\Game\Player\PlayerAbilities\ProjectileAbility\ProjectileVFX.cs" />
     <Compile Include="Assets\Scripts\Game\Player\PlayerActions.cs" />
     <Compile Include="Assets\Scripts\Game\Player\PlayerHealth.cs" />
     <Compile Include="Assets\Scripts\Game\Player\PlayerInput.cs" />
     <Compile Include="Assets\Scripts\Game\Player\PlayerMovement.cs" />
+    <Compile Include="Assets\Scripts\Game\Player\RespawnPlayer.cs" />
     <Compile Include="Assets\Scripts\Game\SpawnWaves\Wave.cs" />
     <Compile Include="Assets\Scripts\Game\SpawnWaves\WaveManager.cs" />
+    <Compile Include="Assets\Scripts\Game\SpawnWaves\WaveObject.cs" />
+    <Compile Include="Assets\Scripts\UI\HUD\HUD_Bomb.cs" />
+    <Compile Include="Assets\Scripts\UI\HUD\HUD_Laser.cs" />
+    <Compile Include="Assets\Scripts\UI\HUD\HUD_Lives.cs" />
+    <Compile Include="Assets\Scripts\UI\HUD\HUD_Score.cs" />
+    <Compile Include="Assets\Scripts\UI\HUD\HUD_Wave.cs" />
+    <Compile Include="Assets\Scripts\UI\NewWaveHeader.cs" />
+    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro.cginc" />
+    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile Overlay.shader" />
+    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Bitmap.shader" />
+    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface-Mobile.shader" />
+    <None Include="Assets\Fonts\Major_Mono_Display\OFL.txt" />
+    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface.shader" />
+    <None Include="Assets\TextMesh Pro\Sprites\EmojiOne Attribution.txt" />
+    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Bitmap-Custom-Atlas.shader" />
+    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF.shader" />
+    <None Include="Assets\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
+    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro_Properties.cginc" />
+    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro_Surface.cginc" />
+    <None Include="Assets\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
+    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile Masking.shader" />
+    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF Overlay.shader" />
+    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Bitmap-Mobile.shader" />
+    <None Include="Assets\TextMesh Pro\Fonts\LiberationSans - OFL.txt" />
+    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile.shader" />
+    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Sprite.shader" />
     <Reference Include="UnityEngine">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.2f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
     </Reference>
@@ -645,6 +674,9 @@
     <Reference Include="Unity.CollabProxy.Editor">
       <HintPath>C:/Users/Chris/Unity/Supersolid_Asteroids/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.Postprocessing.Editor">
+      <HintPath>C:/Users/Chris/Unity/Supersolid_Asteroids/Library/ScriptAssemblies/Unity.Postprocessing.Editor.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.Rider.Editor">
       <HintPath>C:/Users/Chris/Unity/Supersolid_Asteroids/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
     </Reference>
@@ -662,6 +694,9 @@
     </Reference>
     <Reference Include="Unity.2D.Common.Runtime">
       <HintPath>C:/Users/Chris/Unity/Supersolid_Asteroids/Library/ScriptAssemblies/Unity.2D.Common.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Postprocessing.Runtime">
+      <HintPath>C:/Users/Chris/Unity/Supersolid_Asteroids/Library/ScriptAssemblies/Unity.Postprocessing.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="Unity.2D.Tilemap.Editor">
       <HintPath>C:/Users/Chris/Unity/Supersolid_Asteroids/Library/ScriptAssemblies/Unity.2D.Tilemap.Editor.dll</HintPath>
@@ -689,12 +724,6 @@
     </Reference>
     <Reference Include="UnityEditor.UI">
       <HintPath>C:/Users/Chris/Unity/Supersolid_Asteroids/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Postprocessing.Editor">
-      <HintPath>C:/Users/Chris/Unity/Supersolid_Asteroids/Library/ScriptAssemblies/Unity.Postprocessing.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Postprocessing.Runtime">
-      <HintPath>C:/Users/Chris/Unity/Supersolid_Asteroids/Library/ScriptAssemblies/Unity.Postprocessing.Runtime.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup></ItemGroup>

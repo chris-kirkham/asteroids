@@ -12,7 +12,7 @@ namespace Game
         public event Action Damaged;
         public event Action Killed;
 
-        protected virtual void Awake()
+        protected void Awake()
         {
             currHealth = maxHealth;
         }
@@ -26,6 +26,11 @@ namespace Game
         public virtual void Kill()
         {
             Killed?.Invoke();
+        }
+
+        public float GetCurrentHealth()
+        {
+            return currHealth;
         }
     }
 }
