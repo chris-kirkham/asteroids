@@ -11,6 +11,5 @@ namespace Game
         [SerializeField] private SpawnPositionMode spawnPositionMode;
         private enum SpawnPositionMode { OnObject, ColliderAABB, WithinScreen };
 
-
     }
 }

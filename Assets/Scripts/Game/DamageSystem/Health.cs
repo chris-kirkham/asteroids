@@ -3,24 +3,30 @@ using UnityEngine;
 
 namespace Game
 {
-    public abstract class Health : MonoBehaviour, IDamageable, IKillable
+    public class Health : MonoBehaviour, IDamageable, IKillable
     {
-        [SerializeField] [Min(0)] protected float maxHealth;
-        protected float currHealth;
+        //inspector parameters
+        [SerializeField] [Min(0)] protected int initialHealth;
+        
+        //private variables
+        protected int currHealth;
+        protected bool isInvulnerable = false;
 
         //Health-related events
-        public event Action Damaged;
+        public event Action TookDamage;
+        public event Action<int> TookNDamage;
         public event Action Killed;
 
         protected void Awake()
         {
-            currHealth = maxHealth;
+            currHealth = initialHealth;
         }
 
-        public virtual void Damage(float damage)
+        public virtual void Damage(int damage)
         {
             currHealth = Mathf.Max(currHealth - damage, 0);
-            Damaged?.Invoke();
+            TookDamage?.Invoke();
+            TookNDamage?.Invoke(damage);
         }
 
         public virtual void Kill()
@@ -28,7 +34,7 @@ namespace Game
             Killed?.Invoke();
         }
 
-        public float GetCurrentHealth()
+        public int GetCurrentHealth()
         {
             return currHealth;
         }

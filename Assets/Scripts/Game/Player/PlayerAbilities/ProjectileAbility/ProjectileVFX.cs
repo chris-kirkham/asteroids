@@ -10,9 +10,9 @@ namespace Game
     [RequireComponent(typeof(Projectile))]
     public class ProjectileVFX : MonoBehaviour
     {
-        [SerializeField] ParticleSystem trailVFX;
-        [SerializeField] ParticleSystem explosionVFX;
-        [SerializeField] ParticleSystem maxDistDestroyVFX;
+        [SerializeField] ParticleSystem trailVFX = null;
+        [SerializeField] ParticleSystem explosionVFX = null;
+        [SerializeField] ParticleSystem maxDistDestroyVFX = null;
 
         Projectile projectile;
 

@@ -5,7 +5,7 @@ namespace Game
 {
     public class AsteroidHealth : Health
     {
-        public override void Damage(float damage)
+        public override void Damage(int damage)
         {
             base.Damage(damage);
             if (currHealth <= 0) Kill();
@@ -15,11 +15,6 @@ namespace Game
         {
             base.Kill();
             Destroy(gameObject);
-        }
-
-        private void Split()
-        {
-
         }
     }
 }

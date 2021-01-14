@@ -13,7 +13,7 @@ namespace Game
     {
         private PlayerInput input;
         
-        [SerializeField] private List<GameObjectAction> actions;
+        [SerializeField] private List<GameObjectAction> actions = null;
 
         private void Awake()
         {

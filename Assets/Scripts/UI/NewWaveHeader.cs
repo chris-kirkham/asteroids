@@ -12,8 +12,8 @@ namespace UI
     public class NewWaveHeader : MonoBehaviour
     {
         //inspector parameters
-        [SerializeField] private WaveManager waveManager;
-        [SerializeField] [Min(0)] private float textDisplayTime;
+        [SerializeField] private WaveManager waveManager = null;
+        [SerializeField] [Min(0)] private float textDisplayTime = 1;
 
         //components
         private TextMeshPro text;
@@ -21,30 +21,30 @@ namespace UI
         private void Awake()
         {
             text = GetComponent<TextMeshPro>();
+            text.SetText(""); //clear text until needed
         }
 
         private void OnEnable()
         {
-            //waveManager.WaveEnded += DisplayNewWaveHeader;
+            waveManager.WaveEnded += StartDisplayWaveTextCoroutine;
         }
 
         private void OnDisable()
         {
-            //waveManager.WaveEnded -= DisplayNewWaveHeader;
+            waveManager.WaveEnded -= StartDisplayWaveTextCoroutine;
         }
 
-        private void DisplayNewWaveHeader(int currWave)
+        private void StartDisplayWaveTextCoroutine(int currWave)
         {
-            DisplayNewWaveHeaderCoroutine(currWave);
+            StartCoroutine(DisplayNewWaveHeaderCoroutine(currWave));
         }
 
         //displays the wave text for the set time, then hides it.
         private IEnumerator DisplayNewWaveHeaderCoroutine(int currWave)
         {
-            text.enabled = true;
             text.SetText("Wave " + currWave);
             yield return new WaitForSeconds(textDisplayTime);
-            text.enabled = false;
+            text.SetText("");
         }
 
     }

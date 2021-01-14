@@ -13,11 +13,11 @@ namespace Game
         private PlayerInput input;
         
         [Header("Thrust settings")]
-        [SerializeField] private float thrustForce;
-        [SerializeField] private float maxSpeed;
+        [SerializeField] private float thrustForce = 1;
+        [SerializeField] private float maxSpeed = 10;
         
         [Header("Turn settings")]
-        [SerializeField] private float turnSpeed;
+        [SerializeField] private float turnSpeed = 1;
 
         private void Awake()
         {

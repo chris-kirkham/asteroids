@@ -23,6 +23,7 @@ namespace Game
         private void OnWaveEnded()
         {
             WaveEnded?.Invoke(currWave);
+            currWave++;
         }
 
     }

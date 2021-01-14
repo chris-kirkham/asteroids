@@ -9,30 +9,65 @@ namespace Game
     /// </summary>
     public class Wave : MonoBehaviour
     {
-        //inspector variables
-        //[Tooltip("The list of actions to be performed this wave.")]
-        //[SerializeField] private List<GameAction> waveActions;
+        private struct WaveSpawn
+        {
+            public GameObject objectToSpawn;
+            public int numberToSpawn;
+        }
+        
+        //inspector parameters
+        [SerializeField] private List<WaveSpawn> waveSpawns = null;
 
-        [Tooltip("The time, in seconds, from instantiation until this wave's actions begin.")]
-        [SerializeField] [Min(0)] private float waveStartDelay;
+        //private variables
+        private int numRemainingInWave;
 
         //events
         public event Action WaveEnded;
 
         private void Awake()
         {
-            Invoke("DoWave", waveStartDelay);
+            InitNumRemaining();
+            DoWave();
         }
 
         private void DoWave()
         {
-            //foreach (GameAction waveAction in waveActions) waveAction.Execute();
-            throw new System.NotImplementedException();
+            InitNumRemaining();
+        
+            foreach(WaveSpawn waveSpawn in waveSpawns)
+            {
+                for(int i = 0; i < waveSpawn.numberToSpawn; i++)
+                {
+                    SpawnWaveObject(waveSpawn.objectToSpawn);
+                }
+            }
+        }
+        
+        private void SpawnWaveObject(GameObject objectToSpawn)
+        {
+            GameObject waveObject = Instantiate(objectToSpawn);
+            if (objectToSpawn.GetComponent<WaveObject>()) objectToSpawn.AddComponent<WaveObject>();
+            waveObject.GetComponent<WaveObject>().Removed += DecrementNumRemaining;
+            waveObject.GetComponent<WaveObject>().Removed += CheckWaveEnded;
         }
 
-        private void DoWaveEnded()
+        private void InitNumRemaining()
         {
-            WaveEnded?.Invoke();
+            numRemainingInWave = 0;
+            foreach (WaveSpawn waveSpawn in waveSpawns)
+            {
+               numRemainingInWave += waveSpawn.numberToSpawn;
+            }
+        }
+
+        private void DecrementNumRemaining()
+        {
+            numRemainingInWave--;
+        }
+
+        private void CheckWaveEnded()
+        {
+            if (numRemainingInWave <= 0) WaveEnded?.Invoke();
         }
     }
 }

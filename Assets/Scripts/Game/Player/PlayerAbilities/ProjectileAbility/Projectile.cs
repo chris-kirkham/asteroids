@@ -10,9 +10,9 @@ namespace Game
     public class Projectile : MonoBehaviour
     {
         //inspector variables
-        [SerializeField] private float speed;
-        [SerializeField] private float maxDistance;
-        [SerializeField] private float damage;
+        [SerializeField] private float speed = 1;
+        [SerializeField] private float maxDistance = 10;
+        [SerializeField] private int damage = 1;
 
         //private variables
         private Vector2 origin;

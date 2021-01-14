@@ -66,6 +66,7 @@
     <Compile Include="Assets\Scripts\Game\Common\Actions\Base\GameAction.cs" />
     <Compile Include="Assets\Scripts\Game\Common\Actions\Base\GameActionGeneric.cs" />
     <Compile Include="Assets\Scripts\Game\Common\Actions\GameObjectAction.cs" />
+    <Compile Include="Assets\Scripts\Game\Common\ScoreValue.cs" />
     <Compile Include="Assets\Scripts\Game\Common\ScreenWrap.cs" />
     <Compile Include="Assets\Scripts\Game\Common\Spawner.cs" />
     <Compile Include="Assets\Scripts\Game\DamageSystem\Health.cs" />
@@ -78,7 +79,6 @@
     <Compile Include="Assets\Scripts\Game\Player\PlayerAbilities\ProjectileAbility\ProjectileAction.cs" />
     <Compile Include="Assets\Scripts\Game\Player\PlayerAbilities\ProjectileAbility\ProjectileVFX.cs" />
     <Compile Include="Assets\Scripts\Game\Player\PlayerActions.cs" />
-    <Compile Include="Assets\Scripts\Game\Player\PlayerHealth.cs" />
     <Compile Include="Assets\Scripts\Game\Player\PlayerInput.cs" />
     <Compile Include="Assets\Scripts\Game\Player\PlayerMovement.cs" />
     <Compile Include="Assets\Scripts\Game\Player\RespawnPlayer.cs" />

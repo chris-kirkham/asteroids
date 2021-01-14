@@ -7,7 +7,7 @@ namespace Game
     /// </summary>
     public class AsteroidMovement : MonoBehaviour
     {
-        [SerializeField] [Min(0)] private float moveSpeed;
+        [SerializeField] [Min(0)] private float moveSpeed = 1;
 
         private Vector2 moveDirection;
 

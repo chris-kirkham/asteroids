@@ -3,8 +3,8 @@ ScriptsOnlyBuild:
     Assembly-CSharp.dll:
     - Game.AsteroidHealth
     - Game.AsteroidMovement
+    - Game.Health
     - Game.PlayerActions
-    - Game.PlayerHealth
     - Game.PlayerInput
     - Game.PlayerMovement
     - Game.Projectile
@@ -16,6 +16,7 @@ ScriptsOnlyBuild:
     - HUD_Laser
     - HUD_Score
     - HUD_Wave
+    - ScoreValue
     - ScreenWrap
     - UI.HUD_Lives
     - UI.NewWaveHeader
@@ -96,61 +97,63 @@ ScriptsOnlyBuild:
     - Class: 109
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 11208}
+      Script: {instanceID: 11232}
     - Class: 114
-      Script: {instanceID: 11420}
+      Script: {instanceID: 11446}
     - Class: 114
-      Script: {instanceID: 11504}
+      Script: {instanceID: 11826}
     - Class: 114
-      Script: {instanceID: 11800}
+      Script: {instanceID: 11856}
     - Class: 114
-      Script: {instanceID: 11970}
+      Script: {instanceID: 11998}
     - Class: 114
-      Script: {instanceID: 12030}
+      Script: {instanceID: 12058}
     - Class: 114
-      Script: {instanceID: 12052}
+      Script: {instanceID: 12080}
     - Class: 114
-      Script: {instanceID: 12316}
+      Script: {instanceID: 12344}
     - Class: 114
-      Script: {instanceID: 12368}
+      Script: {instanceID: 12396}
     - Class: 114
-      Script: {instanceID: 12476}
+      Script: {instanceID: 12504}
     - Class: 114
-      Script: {instanceID: 12502}
+      Script: {instanceID: 12530}
     - Class: 114
-      Script: {instanceID: 12848}
+      Script: {instanceID: 12876}
     - Class: 114
-      Script: {instanceID: 12856}
+      Script: {instanceID: 12884}
     - Class: 114
-      Script: {instanceID: 12916}
+      Script: {instanceID: 12944}
     - Class: 114
-      Script: {instanceID: 13426}
+      Script: {instanceID: 13232}
     - Class: 114
-      Script: {instanceID: 13444}
+      Script: {instanceID: 13264}
     - Class: 114
-      Script: {instanceID: 14148}
+      Script: {instanceID: 13458}
     - Class: 114
-      Script: {instanceID: 14228}
+      Script: {instanceID: 13476}
     - Class: 114
-      Script: {instanceID: 14302}
+      Script: {instanceID: 13494}
     - Class: 114
-      Script: {instanceID: 14322}
+      Script: {instanceID: 13678}
     - Class: 114
-      Script: {instanceID: 14348}
+      Script: {instanceID: 13926}
     - Class: 114
-      Script: {instanceID: 14598}
+      Script: {instanceID: 14186}
     - Class: 114
-      Script: {instanceID: 23402}
+      Script: {instanceID: 14266}
     - Class: 114
-      Script: {instanceID: 23408}
+      Script: {instanceID: 14340}
     - Class: 114
-      Script: {instanceID: 23414}
+      Script: {instanceID: 14360}
     - Class: 114
-      Script: {instanceID: 23420}
+      Script: {instanceID: 14386}
     - Class: 114
-      Script: {instanceID: 23426}
+      Script: {instanceID: 14498}
     - Class: 114
-      Script: {instanceID: 24194}
+      Script: {instanceID: 14638}
+    - Class: 114
+      Script: {instanceID: 15626}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -214,6 +217,12 @@ ScriptsOnlyBuild:
     className: TMP_Dropdown
   - hash:
       serializedVersion: 2
+      Hash: 02204f8dec907de7fb52d5142579ab6e
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: Game
+    className: RespawnPlayer
+  - hash:
+      serializedVersion: 2
       Hash: 71f7f12b8d0f4fd73590db8bcb6d453c
     assemblyName: Unity.Postprocessing.Runtime.dll
     namespaceName: UnityEngine.Rendering.PostProcessing
@@ -242,12 +251,6 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: GroupTrack
-  - hash:
-      serializedVersion: 2
-      Hash: 27b1590f5fed2c3636ac627b082c67f7
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: Game
-    className: PlayerHealth
   - hash:
       serializedVersion: 2
       Hash: a5781dc71a671b1ad2b38de19f24b71f
@@ -352,6 +355,12 @@ ScriptsOnlyBuild:
     className: PhysicsRaycaster
   - hash:
       serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: HUD_Wave
+  - hash:
+      serializedVersion: 2
       Hash: e82c0521cdfe8cb6a168ef7208a98d4a
     assemblyName: Unity.Postprocessing.Runtime.dll
     namespaceName: UnityEngine.Rendering.PostProcessing
@@ -406,7 +415,7 @@ ScriptsOnlyBuild:
     className: PixelPerfectCamera
   - hash:
       serializedVersion: 2
-      Hash: da6259b01442065025f764fa37a1496c
+      Hash: e776eddf7a1cbb119e14100fa228d3f8
     assemblyName: Assembly-CSharp.dll
     namespaceName: Game
     className: Projectile
@@ -448,7 +457,7 @@ ScriptsOnlyBuild:
     className: EventSystem
   - hash:
       serializedVersion: 2
-      Hash: 27b1590f5fed2c3636ac627b082c67f7
+      Hash: be7d9cfc734f3f9d6a2eeb798f5b4380
     assemblyName: Assembly-CSharp.dll
     namespaceName: Game
     className: AsteroidHealth
@@ -592,10 +601,22 @@ ScriptsOnlyBuild:
     className: RawImage
   - hash:
       serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: HUD_Bomb
+  - hash:
+      serializedVersion: 2
       Hash: 5ad4aa237d47ac2bab17bacb672edf7a
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
     className: VerticalLayoutGroup
+  - hash:
+      serializedVersion: 2
+      Hash: 2608340bcfe60dbcb93ac4bfff5f2e25
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: UI
+    className: HUD_Lives
   - hash:
       serializedVersion: 2
       Hash: 71b711096c6c32621c1d4c02310898b7
@@ -652,13 +673,25 @@ ScriptsOnlyBuild:
     className: Physics2DRaycaster
   - hash:
       serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: HUD_Laser
+  - hash:
+      serializedVersion: 2
       Hash: c1933cc0a2f4ff6eb13333347497beb3
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: TimelineAsset
   - hash:
       serializedVersion: 2
-      Hash: d90f9309419e40275b03d8053844f0e7
+      Hash: 3ef203d4834d769151dac2d3332a28eb
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: UI
+    className: NewWaveHeader
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
     assemblyName: Assembly-CSharp.dll
     namespaceName: Game
     className: Wave
@@ -682,10 +715,22 @@ ScriptsOnlyBuild:
     className: GraphicRaycaster
   - hash:
       serializedVersion: 2
+      Hash: be7d9cfc734f3f9d6a2eeb798f5b4380
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: Game
+    className: Health
+  - hash:
+      serializedVersion: 2
       Hash: 88cc9df3c6fc697bfbeacd24c0d6f2d7
     assemblyName: UnityEngine.TestRunner.dll
     namespaceName: UnityEngine.TestTools
     className: BeforeAfterTestCommandState
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: WaveObject
   - hash:
       serializedVersion: 2
       Hash: c3d3430df9e3ea95e3e3d587961390fb
@@ -784,6 +829,12 @@ ScriptsOnlyBuild:
     className: TestRunCallbackListener
   - hash:
       serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: HUD_Score
+  - hash:
+      serializedVersion: 2
       Hash: 4ef0f7d42cdb13479386e1f049c315aa
     assemblyName: UnityEngine.TestRunner.dll
     namespaceName: UnityEngine.TestTools.TestRunner
@@ -838,52 +889,10 @@ ScriptsOnlyBuild:
     className: PlayableTrack
   - hash:
       serializedVersion: 2
-      Hash: 43e59fc0b65280cb813bee798fdefe2d
+      Hash: 85af9a2367da2c6ce09bf448bd7d9ae1
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
-    className: WaveObject
-  - hash:
-      serializedVersion: 2
-      Hash: fab6a5f589914173344faebe9a99c610
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: UI
-    className: HUD_Lives
-  - hash:
-      serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: HUD_Score
-  - hash:
-      serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: HUD_Bomb
-  - hash:
-      serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: HUD_Laser
-  - hash:
-      serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: HUD_Wave
-  - hash:
-      serializedVersion: 2
-      Hash: 3ef203d4834d769151dac2d3332a28eb
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: UI
-    className: NewWaveHeader
-  - hash:
-      serializedVersion: 2
-      Hash: 56574ba46fddff3befd7e3f4ae111711
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: RespawnPlayer
+    className: ScoreValue
   platform: 5
   scenePathNames:
   - Assets/Scenes/SampleScene.unity

@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System;
 using UnityEngine;
 
 namespace Game
@@ -7,6 +6,8 @@ namespace Game
     /// <summary>An object which can be killed.</summary>
     public interface IKillable
     {
+        event Action Killed;
+
         void Kill();
     }
 }

@@ -6,8 +6,8 @@ namespace Game
     [RequireComponent(typeof(Health))]
     public class Splitter : MonoBehaviour
     {
-        [SerializeField] GameObject objToSplitInto;
-        [SerializeField] [Min(1)] int numToSplitInto;
+        [SerializeField] GameObject objToSplitInto = null;
+        [SerializeField] [Min(1)] int numToSplitInto = 2;
 
         //health component to receive kill event from
         private Health health;

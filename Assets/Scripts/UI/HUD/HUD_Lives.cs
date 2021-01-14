@@ -8,8 +8,10 @@ namespace UI
     [RequireComponent(typeof(TextMeshPro))]
     public class HUD_Lives : MonoBehaviour
     {
-        [SerializeField] private PlayerHealth playerLives;
+        //inspector parameters
+        [SerializeField] private Health playerLives = null; //Health can be used as "lives" by letting each health point mean one life
 
+        //private variables
         private TextMeshPro text;
 
         private void Awake()
@@ -19,24 +21,24 @@ namespace UI
 
         private void Start()
         {
-            UpdateText((int)playerLives.GetCurrentHealth());
+            UpdateText();
         }
 
         private void OnEnable()
         {
-        
+            playerLives.TookDamage += UpdateText;
         }
 
         private void OnDisable()
         {
-
+            playerLives.TookDamage -= UpdateText;
         }
 
-        private void UpdateText(int currLives)
+        private void UpdateText()
         {
             //construct the "lives" text symbols (handily, in the font I'm using, uppercase As look like spaceships)
             String livesSymbols = "";
-            for (int i = 0; i < currLives; i++) livesSymbols += "A";
+            for (int i = 0; i < playerLives.GetCurrentHealth(); i++) livesSymbols += "A";
 
             text.SetText("Lives " + livesSymbols);
         }

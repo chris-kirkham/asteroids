@@ -1,5 +1,5 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 
 namespace Game
@@ -7,6 +7,9 @@ namespace Game
     /// <summary>An object which can be damaged.</summary>
     public interface IDamageable
     {
-        void Damage(float damage);
+        event Action TookDamage;
+        event Action<int> TookNDamage;
+
+        void Damage(int damage);
     }
 }

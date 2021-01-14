@@ -11,10 +11,10 @@ namespace Game
     {
         //inspector variables
         [Tooltip("The cooldown time between projectile launches, in seconds.")]
-        [SerializeField] [Min(0)] private float fireCooldown;
+        [SerializeField] [Min(0)] private float fireCooldown = 0;
         
         [Tooltip("The projectile GameObject, to be instantiated on firing the projectile.")]
-        [SerializeField] private GameObject projectileObject;
+        [SerializeField] private GameObject projectileObject = null;
 
         //private variables
         private float previousFireTime;
