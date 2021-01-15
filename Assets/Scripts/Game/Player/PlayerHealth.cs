@@ -19,11 +19,6 @@ namespace Game
             waveManager.WaveStarted -= MakeInvulnerableOnWaveStart;
         }
 
-        private void MakeInvulnerableOnWaveStart()
-        {
-            StartCoroutine(Coroutine_MakeInvulnerableForNSeconds(invlunTimeOnWaveStart));
-        }
-
         private IEnumerator Coroutine_MakeInvulnerableForNSeconds(float invulnTime)
         {
             isInvulnerable = true;
@@ -34,5 +29,16 @@ namespace Game
             isInvulnerable = false;
             InvokeBecameVulnerable();
         }
+        public void MakeInvulnerableForNSeconds(float invulnTime)
+        {
+            StartCoroutine(Coroutine_MakeInvulnerableForNSeconds(invulnTime));
+        }
+
+        private void MakeInvulnerableOnWaveStart()
+        {
+            StartCoroutine(Coroutine_MakeInvulnerableForNSeconds(invlunTimeOnWaveStart));
+        }
+
+        
     }
 }

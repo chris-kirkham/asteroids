@@ -7,14 +7,17 @@ namespace Game
     /// A projectile which moves through the game world at a constant speed and direction, and destroys itself when it reaches its maximum distance or hits something.
     /// </summary>
     [RequireComponent(typeof(Rigidbody))]
+    [RequireComponent(typeof(Damager))]
     public class Projectile : MonoBehaviour
     {
-        //inspector variables
+        //inspector
         [SerializeField] private float speed = 1;
         [SerializeField] private float maxDistance = 10;
-        [SerializeField] private int damage = 1;
 
-        //private variables
+        //components
+        private Damager damager;
+
+        //private
         private Vector3 moveDirection;
         private float distanceTravelled;
 
@@ -24,6 +27,8 @@ namespace Game
 
         void Awake()
         {
+            damager = GetComponent<Damager>();
+
             moveDirection = transform.forward;
             distanceTravelled = 0f;
         }
@@ -43,7 +48,15 @@ namespace Game
 
         private void OnTriggerEnter(Collider other)
         {
-            other.gameObject.GetComponent<IDamageable>()?.Damage(damage); //damage collided-with object if possible
+            foreach(string tag in damager.TagsToDamage)
+            {
+                if(other.gameObject.CompareTag(tag))
+                {
+                    other.gameObject.GetComponent<IDamageable>()?.Damage(damager); //damage collided-with object if possible
+                    break;
+                }
+            }
+
             DestroyProjectileOnHit();
         }
 

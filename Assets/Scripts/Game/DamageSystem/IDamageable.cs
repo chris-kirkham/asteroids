@@ -10,6 +10,8 @@ namespace Game
         event Action TookDamage;
         event Action<int> TookNDamage;
 
+        void Damage(Damager damager);
+
         void Damage(int damage);
     }
 }

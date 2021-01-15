@@ -11,7 +11,7 @@ namespace Game
 
         //components
         private Health playerHealth;
-        private Renderer renderer;
+        private Renderer r;
 
         //private
         private Material previousMaterial; //material to revert to after invulnerability has worn off
@@ -19,7 +19,7 @@ namespace Game
         void Awake()
         {
             playerHealth = GetComponent<Health>();
-            renderer = GetComponent<Renderer>();
+            r = GetComponent<Renderer>();
         }
 
         private void OnEnable()
@@ -42,14 +42,14 @@ namespace Game
             }
             else
             {
-                previousMaterial = renderer.material;
-                renderer.material = invulnMaterial;
+                previousMaterial = r.material;
+                r.material = invulnMaterial;
             }
         }
 
         private void SetVulnMaterial()
         {
-            renderer.material = previousMaterial;
+            r.material = previousMaterial;
         }
     }
 }

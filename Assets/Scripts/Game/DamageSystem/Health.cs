@@ -26,6 +26,12 @@ namespace Game
             currHealth = initialHealth;
         }
 
+        public virtual void Damage(Damager damager)
+        {
+            int damage = damager.Damage;
+            Damage(damage);
+        }
+
         public virtual void Damage(int damage)
         {
             if(!isInvulnerable)

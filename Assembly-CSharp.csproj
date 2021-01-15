@@ -69,6 +69,8 @@
     <Compile Include="Assets\Scripts\Game\Common\ScoreValue.cs" />
     <Compile Include="Assets\Scripts\Game\Common\ScreenWrap.cs" />
     <Compile Include="Assets\Scripts\Game\Common\Spawner.cs" />
+    <Compile Include="Assets\Scripts\Game\DamageSystem\DamageOnCollision.cs" />
+    <Compile Include="Assets\Scripts\Game\DamageSystem\Damager.cs" />
     <Compile Include="Assets\Scripts\Game\DamageSystem\Health.cs" />
     <Compile Include="Assets\Scripts\Game\DamageSystem\IDamageable.cs" />
     <Compile Include="Assets\Scripts\Game\DamageSystem\IKillable.cs" />

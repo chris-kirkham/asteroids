@@ -31,7 +31,6 @@ namespace Game
             if(currTime - previousFireTime > fireCooldown)
             {
                 Instantiate(projectileObject, obj.transform.position, obj.transform.rotation);
-
                 previousFireTime = currTime;
             }
         }

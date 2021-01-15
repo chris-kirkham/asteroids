@@ -14,13 +14,16 @@ GameObject:
   - component: {fileID: 851987584964191609}
   - component: {fileID: 851987584964191608}
   - component: {fileID: 851987584964191611}
+  - component: {fileID: 115992471676747371}
   - component: {fileID: 6073045317797594653}
   - component: {fileID: -811418733715274658}
   - component: {fileID: -1718420105648283357}
   - component: {fileID: 6193913499116112433}
-  m_Layer: 0
+  - component: {fileID: -5243902887453332311}
+  - component: {fileID: -271533636454327973}
+  m_Layer: 10
   m_Name: Asteroid_Medium_4split
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -98,7 +101,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b6a01c3be9fe5c45b81c4d54f3b4356, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 2
+  moveSpeed: 3
 --- !u!114 &851987584964191608
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -112,6 +115,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   initialHealth: 2
+  isInvulnerable: 0
 --- !u!64 &851987584964191611
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -120,12 +124,28 @@ MeshCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 851987584964191610}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 4
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -462981019419857548, guid: d52f33bc035cc284f8b46708976bd9ca, type: 3}
+--- !u!54 &115992471676747371
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 851987584964191610}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!114 &6073045317797594653
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -177,5 +197,32 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 75a96d0d6805c9f41b139d9cc0029244, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-5243902887453332311
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 851987584964191610}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45dbc91630666534ebeef9e7b0762556, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 1
+  tagsToDamage:
+  - Player
+--- !u!114 &-271533636454327973
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 851987584964191610}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6da128ce2b9efd640b59b85d98ce6d3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
