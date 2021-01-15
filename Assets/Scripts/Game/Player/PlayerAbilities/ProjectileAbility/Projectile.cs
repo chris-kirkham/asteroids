@@ -15,45 +15,50 @@ namespace Game
         [SerializeField] private int damage = 1;
 
         //private variables
-        private Vector2 origin;
+        private Vector3 moveDirection;
+        private float distanceTravelled;
 
         //events
-        public event Action Exploded;
+        public event Action HitSomething;
         public event Action DestroyedAfterMaxDist;
 
         void Awake()
         {
-            origin = transform.position;
+            moveDirection = transform.forward;
+            distanceTravelled = 0f;
         }
 
         private void Update()
         {
-            transform.position += transform.forward * speed * Time.deltaTime;
+            //move projectile in its forward direction and update distance travelled
+            Vector3 movement = moveDirection * speed * Time.deltaTime;
+            transform.position += movement;
+            distanceTravelled += movement.magnitude;
         }
 
         private void LateUpdate()
         {
-            DestroyIfTravelledMaxDistance();
+            DestroyProjectileIfTravelledMaxDistance();
         }
 
-        private void DestroyIfTravelledMaxDistance()
+        private void OnTriggerEnter(Collider other)
         {
-            if (Vector2.Distance(origin, transform.position) > maxDistance)
+            other.gameObject.GetComponent<IDamageable>()?.Damage(damage); //damage collided-with object if possible
+            DestroyProjectileOnHit();
+        }
+
+        private void DestroyProjectileIfTravelledMaxDistance()
+        {
+            if (distanceTravelled > maxDistance)
             {
                 DestroyedAfterMaxDist?.Invoke();
                 Destroy(gameObject);
             }
         }
 
-        private void OnTriggerEnter(Collider other)
+        private void DestroyProjectileOnHit()
         {
-            other.gameObject.GetComponent<IDamageable>()?.Damage(damage);
-            Explode();
-        }
-
-        public void Explode()
-        {
-            Exploded?.Invoke();
+            HitSomething?.Invoke();
             Destroy(gameObject);
         }
     }

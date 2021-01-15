@@ -16,7 +16,8 @@ GameObject:
   - component: {fileID: 4416633839327882019}
   - component: {fileID: 4416633839327882016}
   - component: {fileID: -4592660943437064171}
-  - component: {fileID: 1635644467653883659}
+  - component: {fileID: 2663028901674899942}
+  - component: {fileID: 4931072369123113009}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -126,6 +127,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bd13183c1cdd29469d95408d0b92c30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  leftTurnKey: 276
+  rightTurnKey: 275
+  forwardThrustKey: 273
+  reverseThrustKey: 274
+  actionKeys: 20000000
 --- !u!114 &4416633839327882016
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -155,7 +161,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   actions:
   - {fileID: 4836775979652519354, guid: 54b2e4aa8273f9c47a4e19b73322ef5b, type: 3}
---- !u!114 &1635644467653883659
+--- !u!114 &2663028901674899942
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -164,7 +170,23 @@ MonoBehaviour:
   m_GameObject: {fileID: 4416633839327882017}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8ebd596c707a2c2478011369c6aa6c9b, type: 3}
+  m_Script: {fileID: 11500000, guid: 2ac2f632e6a538746b4449ecefc2d52c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   initialHealth: 3
+  isInvulnerable: 0
+  waveManager: {fileID: 0}
+  invlunTimeOnWaveStart: 4
+--- !u!114 &4931072369123113009
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4416633839327882017}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cab48208c04c7de49831263521775e85, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  invulnMaterial: {fileID: 2100000, guid: ddae94a38d4df3244a8379ada891c118, type: 2}

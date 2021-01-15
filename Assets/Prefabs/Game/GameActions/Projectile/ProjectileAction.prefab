@@ -43,6 +43,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d81597c53e614984ea8bdddb9ba2295f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireCooldown: 0.25
+  fireCooldown: 0.1
   projectileObject: {fileID: 2527098326603921727, guid: 0f75bc99d7dfdde47990ee361dd355b2,
     type: 3}

@@ -25,8 +25,18 @@ namespace Game
 
         private void Update()
         {
-            //TEST
-            if (input.ActionInputs[0]) actions[0].Execute(gameObject);
+            ExecuteActionInputs();
+        }
+
+        private void ExecuteActionInputs()
+        {
+            for(int i = 0; i < actions.Count; i++)
+            {
+                if(input.ActionInputs.Count > i && input.ActionInputs[i]) //if an input for this action index exists and if it is activated
+                {
+                    actions[i].Execute(gameObject);
+                }
+            }
         }
     }
 }

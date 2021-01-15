@@ -26,12 +26,12 @@ namespace UI
 
         private void OnEnable()
         {
-            waveManager.WaveEnded += StartDisplayWaveTextCoroutine;
+            waveManager.WaveNStarted += StartDisplayWaveTextCoroutine;
         }
 
         private void OnDisable()
         {
-            waveManager.WaveEnded -= StartDisplayWaveTextCoroutine;
+            waveManager.WaveNStarted -= StartDisplayWaveTextCoroutine;
         }
 
         private void StartDisplayWaveTextCoroutine(int currWave)

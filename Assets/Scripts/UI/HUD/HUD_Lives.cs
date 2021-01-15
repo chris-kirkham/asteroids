@@ -1,23 +1,13 @@
 ﻿using Game;
-using TMPro;
 using System;
 using UnityEngine;
 
 namespace UI
 {
-    [RequireComponent(typeof(TextMeshPro))]
-    public class HUD_Lives : MonoBehaviour
+    public class HUD_Lives : HUDText
     {
         //inspector parameters
         [SerializeField] private Health playerLives = null; //Health can be used as "lives" by letting each health point mean one life
-
-        //private variables
-        private TextMeshPro text;
-
-        private void Awake()
-        {
-            text = GetComponent<TextMeshPro>();
-        }
 
         private void Start()
         {

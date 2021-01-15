@@ -9,7 +9,7 @@ namespace Game
     /// </summary>
     public class ProjectileAction : GameObjectAction
     {
-        //inspector variables
+        //inspector parameters
         [Tooltip("The cooldown time between projectile launches, in seconds.")]
         [SerializeField] [Min(0)] private float fireCooldown = 0;
         
@@ -21,9 +21,10 @@ namespace Game
 
         private void Awake()
         {
-            previousFireTime = -fireCooldown; //allows projectile to be fired immediately
+            previousFireTime = -fireCooldown; //allows projectile to be fired immediately on startup
         }
 
+        //fire projectile
         public override void Execute(GameObject obj)
         {
             float currTime = Time.timeSinceLevelLoad;

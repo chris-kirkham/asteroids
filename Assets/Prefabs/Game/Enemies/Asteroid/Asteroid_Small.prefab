@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 6935226562159356623}
   - component: {fileID: -6718364736302931712}
   - component: {fileID: 3428869493186540500}
+  - component: {fileID: 4943687940115508909}
   m_Layer: 0
   m_Name: Asteroid_Small
   m_TagString: Untagged
@@ -109,7 +110,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 321dd8e48c94e414c9049ef6d67ef9b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 1
+  initialHealth: 1
 --- !u!64 &6935226562159356623
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -149,3 +150,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   value: 40
+--- !u!114 &4943687940115508909
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6935226562159356620}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75a96d0d6805c9f41b139d9cc0029244, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

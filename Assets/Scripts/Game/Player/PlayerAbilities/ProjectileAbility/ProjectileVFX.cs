@@ -24,14 +24,14 @@ namespace Game
         private void OnEnable()
         {
             //subscribe to projectile events
-            projectile.Exploded += PlayExplosionVFX;
+            projectile.HitSomething += PlayExplosionVFX;
             projectile.DestroyedAfterMaxDist += PlayMaxDistDestroyVFX;
         }
 
         private void OnDisable()
         {
             //unsubscribe from projectile events
-            projectile.Exploded -= PlayExplosionVFX;
+            projectile.HitSomething -= PlayExplosionVFX;
             projectile.DestroyedAfterMaxDist -= PlayMaxDistDestroyVFX;
         }
 

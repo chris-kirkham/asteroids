@@ -5,19 +5,14 @@ using UnityEngine;
 namespace Game
 {
     /// <summary>
-    /// Represents a "wave" or level in the game
+    /// Represents a "wave" or level in the game. 
+    /// 
+    /// -------HOW TO CONSTRUCT A WAVE--------
+    /// Any child objects of this script's GameObject which have the WaveMember component are considered part of the wave.
+    /// This script subscribes to the events that each wave member sends out, and tracks how many are left in the wave.
     /// </summary>
     public class Wave : MonoBehaviour
     {
-        private struct WaveSpawn
-        {
-            public GameObject objectToSpawn;
-            public int numberToSpawn;
-        }
-        
-        //inspector parameters
-        [SerializeField] private List<WaveSpawn> waveSpawns = null;
-
         //private variables
         private int numRemainingInWave;
 
@@ -26,38 +21,34 @@ namespace Game
 
         private void Awake()
         {
-            InitNumRemaining();
-            DoWave();
-        }
-
-        private void DoWave()
-        {
-            InitNumRemaining();
+            numRemainingInWave = 0; //this will be incremented for each object tracked
         
-            foreach(WaveSpawn waveSpawn in waveSpawns)
+            //all child objects of this object which have WaveMember components will be tracked
+            foreach(Transform child in transform)
             {
-                for(int i = 0; i < waveSpawn.numberToSpawn; i++)
-                {
-                    SpawnWaveObject(waveSpawn.objectToSpawn);
-                }
+                StartTrackingWaveMember(child.gameObject);
             }
         }
-        
-        private void SpawnWaveObject(GameObject objectToSpawn)
+
+        private void StartTrackingWaveMember(GameObject obj)
         {
-            GameObject waveObject = Instantiate(objectToSpawn);
-            if (objectToSpawn.GetComponent<WaveObject>()) objectToSpawn.AddComponent<WaveObject>();
-            waveObject.GetComponent<WaveObject>().Removed += DecrementNumRemaining;
-            waveObject.GetComponent<WaveObject>().Removed += CheckWaveEnded;
+            //if object is a wave member
+            WaveMember memberComponent = obj.GetComponent<WaveMember>();
+            if(memberComponent != null)
+            {
+                numRemainingInWave++;
+
+                memberComponent.RemovedFromWave += DecrementNumRemaining;
+                memberComponent.RemovedFromWave += CheckWaveEnded;
+            }
+
+            ICreatesNewWaveMembers createsMembersComponent = obj.GetComponent<ICreatesNewWaveMembers>();
+            if (createsMembersComponent != null) createsMembersComponent.CreatedNewWaveMembers += StartTrackingWaveMembers;
         }
 
-        private void InitNumRemaining()
+        private void StartTrackingWaveMembers(List<GameObject> objs)
         {
-            numRemainingInWave = 0;
-            foreach (WaveSpawn waveSpawn in waveSpawns)
-            {
-               numRemainingInWave += waveSpawn.numberToSpawn;
-            }
+            foreach (GameObject obj in objs) StartTrackingWaveMember(obj);
         }
 
         private void DecrementNumRemaining()
@@ -67,7 +58,14 @@ namespace Game
 
         private void CheckWaveEnded()
         {
-            if (numRemainingInWave <= 0) WaveEnded?.Invoke();
+            if (numRemainingInWave <= 0) DoWaveEnded();
+        }
+
+        private void DoWaveEnded()
+        {
+            WaveEnded?.Invoke();
+
+            Destroy(gameObject);
         }
     }
 }
