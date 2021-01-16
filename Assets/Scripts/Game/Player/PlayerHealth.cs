@@ -19,6 +19,12 @@ namespace Game
             waveManager.WaveStarted -= MakeInvulnerableOnWaveStart;
         }
 
+        public override void TakeDamage(int damage)
+        {
+            base.TakeDamage(damage);
+            if (currHealth <= 0) Kill();
+        }
+
         private IEnumerator Coroutine_MakeInvulnerableForNSeconds(float invulnTime)
         {
             isInvulnerable = true;
@@ -29,6 +35,7 @@ namespace Game
             isInvulnerable = false;
             InvokeBecameVulnerable();
         }
+
         public void MakeInvulnerableForNSeconds(float invulnTime)
         {
             StartCoroutine(Coroutine_MakeInvulnerableForNSeconds(invulnTime));

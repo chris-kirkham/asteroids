@@ -23,7 +23,7 @@ namespace Game
             {
                 if (other.gameObject.CompareTag(canDamageTag))
                 {
-                    other.gameObject.GetComponent<IDamageable>()?.Damage(damager);
+                    other.gameObject.GetComponent<IDamageable>()?.TakeDamage(damager);
                     break;
                 }
             }

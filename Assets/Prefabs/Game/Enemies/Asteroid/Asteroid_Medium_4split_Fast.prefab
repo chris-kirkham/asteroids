@@ -11,10 +11,10 @@ GameObject:
   - component: {fileID: 851987584964191604}
   - component: {fileID: 851987584964191607}
   - component: {fileID: 851987584964191606}
-  - component: {fileID: 851987584964191609}
-  - component: {fileID: 851987584964191608}
   - component: {fileID: 851987584964191611}
   - component: {fileID: 425574081479243758}
+  - component: {fileID: 851987584964191609}
+  - component: {fileID: 851987584964191608}
   - component: {fileID: 6073045317797594653}
   - component: {fileID: -811418733715274658}
   - component: {fileID: -1718420105648283357}
@@ -89,6 +89,36 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!64 &851987584964191611
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 851987584964191610}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -462981019419857548, guid: d52f33bc035cc284f8b46708976bd9ca, type: 3}
+--- !u!54 &425574081479243758
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 851987584964191610}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!114 &851987584964191609
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -116,36 +146,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   initialHealth: 2
   isInvulnerable: 0
---- !u!64 &851987584964191611
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 851987584964191610}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -462981019419857548, guid: d52f33bc035cc284f8b46708976bd9ca, type: 3}
---- !u!54 &425574081479243758
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 851987584964191610}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!114 &6073045317797594653
 MonoBehaviour:
   m_ObjectHideFlags: 0

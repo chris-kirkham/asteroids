@@ -26,17 +26,16 @@ namespace Game
             currHealth = initialHealth;
         }
 
-        public virtual void Damage(Damager damager)
+        public virtual void TakeDamage(Damager damager)
         {
-            int damage = damager.Damage;
-            Damage(damage);
+            TakeDamage(damager.Damage);
         }
 
-        public virtual void Damage(int damage)
+        public virtual void TakeDamage(int damage)
         {
             if(!isInvulnerable)
             {
-                currHealth = Mathf.Max(currHealth - damage, 0);
+                currHealth -= damage;
                 TookDamage?.Invoke();
                 TookNDamage?.Invoke(damage);
             }

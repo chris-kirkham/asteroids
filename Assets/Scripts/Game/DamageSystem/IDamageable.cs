@@ -7,11 +7,8 @@ namespace Game
     /// <summary>An object which can be damaged.</summary>
     public interface IDamageable
     {
-        event Action TookDamage;
-        event Action<int> TookNDamage;
+        void TakeDamage(Damager damager);
 
-        void Damage(Damager damager);
-
-        void Damage(int damage);
+        void TakeDamage(int damage);
     }
 }

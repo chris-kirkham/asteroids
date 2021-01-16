@@ -25,7 +25,7 @@ namespace Game
         public event Action HitSomething;
         public event Action DestroyedAfterMaxDist;
 
-        void Awake()
+        private void Awake()
         {
             damager = GetComponent<Damager>();
 
@@ -52,7 +52,7 @@ namespace Game
             {
                 if(other.gameObject.CompareTag(tag))
                 {
-                    other.gameObject.GetComponent<IDamageable>()?.Damage(damager); //damage collided-with object if possible
+                    other.gameObject.GetComponent<IDamageable>()?.TakeDamage(damager); //damage collided-with object if possible
                     break;
                 }
             }

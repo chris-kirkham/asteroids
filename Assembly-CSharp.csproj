@@ -77,9 +77,14 @@
     <Compile Include="Assets\Scripts\Game\Enemies\Asteroid\AsteroidHealth.cs" />
     <Compile Include="Assets\Scripts\Game\Enemies\Asteroid\AsteroidMovement.cs" />
     <Compile Include="Assets\Scripts\Game\Enemies\Asteroid\SplitOnKilled.cs" />
+    <Compile Include="Assets\Scripts\Game\GameManagers\GameOverManager.cs" />
     <Compile Include="Assets\Scripts\Game\Player\PlayerAbilities\ProjectileAbility\Projectile.cs" />
     <Compile Include="Assets\Scripts\Game\Player\PlayerAbilities\ProjectileAbility\ProjectileAction.cs" />
+    <Compile Include="Assets\Scripts\Game\Player\PlayerAbilities\ProjectileAbility\ProjectileActionPooled.cs" />
+    <Compile Include="Assets\Scripts\Game\Player\PlayerAbilities\ProjectileAbility\ProjectilePooled.cs" />
     <Compile Include="Assets\Scripts\Game\Player\PlayerAbilities\ProjectileAbility\ProjectileVFX.cs" />
+    <Compile Include="Assets\Scripts\Game\Player\PlayerAbilities\ShieldAbility\AoEBlast.cs" />
+    <Compile Include="Assets\Scripts\Game\Player\PlayerAbilities\ShieldAbility\AoEBlastAbility.cs" />
     <Compile Include="Assets\Scripts\Game\Player\PlayerActions.cs" />
     <Compile Include="Assets\Scripts\Game\Player\PlayerHealth.cs" />
     <Compile Include="Assets\Scripts\Game\Player\PlayerInput.cs" />
@@ -92,8 +97,8 @@
     <Compile Include="Assets\Scripts\Game\SpawnWaves\WaveManager.cs" />
     <Compile Include="Assets\Scripts\Game\SpawnWaves\WaveMember.cs" />
     <Compile Include="Assets\Scripts\UI\HUD\Base\HUDText.cs" />
+    <Compile Include="Assets\Scripts\UI\HUD\HUD_AoEBlast.cs" />
     <Compile Include="Assets\Scripts\UI\HUD\HUD_Bomb.cs" />
-    <Compile Include="Assets\Scripts\UI\HUD\HUD_Laser.cs" />
     <Compile Include="Assets\Scripts\UI\HUD\HUD_Lives.cs" />
     <Compile Include="Assets\Scripts\UI\HUD\HUD_Score.cs" />
     <Compile Include="Assets\Scripts\UI\HUD\HUD_Wave.cs" />
@@ -107,7 +112,6 @@
     <None Include="Assets\TextMesh Pro\Sprites\EmojiOne Attribution.txt" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Bitmap-Custom-Atlas.shader" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF.shader" />
-    <None Include="Assets\Shaders\PlayerInvuln.shader" />
     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro_Properties.cginc" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro_Surface.cginc" />
