@@ -14,18 +14,20 @@ namespace Game
         [SerializeField] [Min(0)] private float fireCooldown = 0;
 
         [Tooltip("The projectile GameObject, to be instantiated on firing the projectile.")]
-        [SerializeField] private GameObject projectileObject = null;
+        [SerializeField] private ProjectilePooled projectile = null;
 
         [SerializeField] [Min(1)] private int initialPoolSize = 10;
 
         //private variables
         private float previousFireTime;
+        private GameObject projectileObj; //the object attached to the given projectile script
 
         private Queue<GameObject> poolQueue;
 
         private void Awake()
         {
             previousFireTime = -fireCooldown; //allows projectile to be fired immediately on startup
+            InitPool();
         }
 
         //fire projectile
@@ -34,7 +36,7 @@ namespace Game
             float currTime = Time.timeSinceLevelLoad;
             if (currTime - previousFireTime > fireCooldown)
             {
-                Instantiate(projectileObject, obj.transform.position, obj.transform.rotation);
+                SpawnFromPool(obj);
                 previousFireTime = currTime;
             }
         }
@@ -48,26 +50,46 @@ namespace Game
         //adds objects to the pool; this instantiates numToSpawn objects, but sets them to be inactive so they don't appear in the game.
         private void AddObjsToPool(int numToSpawn)
         {
-            projectileObject.SetActive(false); //set inactive before instantiating so Awake() etc. don't run
+
+            GameObject projectileObj = projectile.gameObject;
+            projectileObj.SetActive(false); //set inactive before instantiating so Awake() etc. don't run
 
             for(int i = 0; i < numToSpawn; i++)
             {
-                poolQueue.Enqueue(Instantiate(projectileObject));
+                GameObject instantiatedProjectileObj = Instantiate(projectileObj, transform); //instantiate as child of this object, for neater hierarchy
+                poolQueue.Enqueue(instantiatedProjectileObj);
             }
         }
 
-        //doubles the pool size, similarly to how a list grows when its max capacity is reached
+        //grows the pool by its initial size
         private void GrowPool()
         {
-            for(int i = 0; i < poolQueue.Count; i++)
+            for(int i = 0; i < initialPoolSize; i++)
             {
-                AddObjsToPool(poolQueue.Count);
+                AddObjsToPool(initialPoolSize);
             }
         }
 
-        private void SpawnFromPool()
+        private void SpawnFromPool(GameObject executionObj)
         {
-            throw new System.NotImplementedException();
+            if(poolQueue.Count == 0) GrowPool();
+
+            GameObject projectile = poolQueue.Dequeue();
+            projectile.transform.position = executionObj.transform.position;
+            projectile.transform.rotation = executionObj.transform.rotation;
+            projectile.GetComponent<ProjectilePooled>().PoolObj = this; //set the projectile's pool reference to this
+            projectile.SetActive(true);
+        }
+
+        //Adds a projectile back into the pool. Should only be called from the projectile class,
+        //and only if the projectile is already instantiated (objects in the pool are assumed to be instantiated).
+        //TODO: Any fast way to check instantiation?
+        public void AddBackToPool(ProjectilePooled projectile)
+        {
+            //if projectile is still active, deactivate it (it should deactivate itself before adding itself to the pool, but best to check here anyway)
+            if (projectile.gameObject.activeSelf) projectile.gameObject.SetActive(false);
+
+            poolQueue.Enqueue(projectile.gameObject);
         }
     }
 }

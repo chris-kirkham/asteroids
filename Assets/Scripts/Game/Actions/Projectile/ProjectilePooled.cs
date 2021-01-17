@@ -25,13 +25,22 @@ namespace Game
         public event Action HitSomething;
         public event Action DestroyedAfterMaxDist;
 
+        //pooling
+        public ProjectileActionPooled PoolObj { private get; set; }
+
         public void Pooled_Activate()
         {
             gameObject.SetActive(true);
-            Awake();
+            OnEnable();
         }
 
-        private void Awake()
+        private void AddBackToPool()
+        {
+            gameObject.SetActive(false);
+            PoolObj.AddBackToPool(this);
+        }
+
+        private void OnEnable()
         {
             damager = GetComponent<Damager>();
 
@@ -71,14 +80,14 @@ namespace Game
             if (distanceTravelled > maxDistance)
             {
                 DestroyedAfterMaxDist?.Invoke();
-                Destroy(gameObject);
+                AddBackToPool();
             }
         }
 
         private void DestroyProjectileOnHit()
         {
             HitSomething?.Invoke();
-            Destroy(gameObject);
+            AddBackToPool();
         }
     }
 }
