@@ -4,7 +4,9 @@ using UnityEngine;
 
 namespace Game
 {
-    /// <summary>Moves the player based on input.</summary>
+    /// <summary>
+    /// Moves the player based on input.
+    /// </summary>
     [RequireComponent(typeof(Rigidbody))]
     [RequireComponent(typeof(PlayerInput))]
     public class PlayerMovement : MonoBehaviour

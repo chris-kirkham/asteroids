@@ -4,6 +4,9 @@ using UnityEngine;
 
 namespace Game
 {
+    /// <summary>
+    /// Extension of the general health class which adds code to give the player invulnerability for a set time.
+    /// </summary>
     public class PlayerHealth : Health
     {
         [SerializeField] private WaveManager waveManager = null;
@@ -45,7 +48,5 @@ namespace Game
         {
             StartCoroutine(Coroutine_MakeInvulnerableForNSeconds(invlunTimeOnWaveStart));
         }
-
-        
     }
 }

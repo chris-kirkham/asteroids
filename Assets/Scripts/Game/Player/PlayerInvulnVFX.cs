@@ -4,6 +4,9 @@ using UnityEngine;
 
 namespace Game
 {
+    /// <summary>
+    /// Handles VFX for when the player becomes invulnerable/vulnerable
+    /// </summary>
     public class PlayerInvulnVFX : MonoBehaviour
     {
         //inspector

@@ -5,6 +5,9 @@ using UnityEngine;
 
 namespace Game
 {
+    /// <summary>
+    /// Manages spawn waves during gameplay - spawns new waves when one ends.
+    /// </summary>
     public class WaveManager : MonoBehaviour
     {
         //inspector variables
@@ -18,10 +21,13 @@ namespace Game
         public event Action WaveStarted;
         public event Action<int> WaveNStarted;
         public event Action<int> WaveNEnded;
+        public event Action FirstWaveStarted;
+        public event Action AllWavesEnded;
 
         private void Start()
         {
             currWave = 0;
+            FirstWaveStarted?.Invoke();
             StartCoroutine(Coroutine_StartNewWave(timeBetweenWaves));
         }
 
@@ -45,7 +51,14 @@ namespace Game
             WaveNEnded?.Invoke(currWave);
 
             currWave++;
-            if (currWave < waves.Count) StartCoroutine(Coroutine_StartNewWave(timeBetweenWaves));
+            if (currWave < waves.Count)
+            {
+                StartCoroutine(Coroutine_StartNewWave(timeBetweenWaves));
+            }
+            else //all waves ended
+            {
+                AllWavesEnded?.Invoke();
+            }
         }
     }
 }

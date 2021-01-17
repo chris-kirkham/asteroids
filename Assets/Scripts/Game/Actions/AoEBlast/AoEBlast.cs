@@ -3,13 +3,15 @@ using UnityEngine;
 
 namespace Game
 {
+    /// <summary>
+    /// An area-of-effect ability which creates a growing damage area (the attached collider) around the point where the attached object is instantiated.
+    /// </summary>
     [RequireComponent(typeof(Collider))]
     [RequireComponent(typeof(Damager))]
     public class AoEBlast : MonoBehaviour, IKillable
     {
         //inspector params
         [SerializeField] [Min(0)] private float time = 1f;
-        [SerializeField] [Min(1)] private int health = 1;
         [SerializeField] private float growSpeed = 10f;
 
         //components
@@ -17,8 +19,6 @@ namespace Game
 
         //private variables
         private float remainingTime;
-        private int currHealth;
-        private GameObject followTarget;
 
         //events
         public event Action Killed;
@@ -26,7 +26,6 @@ namespace Game
         private void Awake()
         {
             remainingTime = time;
-            currHealth = health;
             damager = GetComponent<Damager>();
         }
 
@@ -41,11 +40,6 @@ namespace Game
             transform.localScale += Vector3.one * growSpeed * Time.deltaTime;
         }
 
-        private void FollowTarget()
-        {
-            if(followTarget != null) transform.position = followTarget.transform.position;
-        }
-
         private void UpdateRemainingTime()
         {
             remainingTime -= Time.deltaTime;
@@ -56,11 +50,6 @@ namespace Game
         {
             Killed?.Invoke();
             Destroy(gameObject);
-        }
-
-        public void SetFollowTarget(GameObject followTarget)
-        {
-            this.followTarget = followTarget;
         }
 
         //damage objects which are in contact with the AoE blast;

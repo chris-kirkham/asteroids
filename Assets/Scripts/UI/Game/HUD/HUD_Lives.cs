@@ -4,7 +4,10 @@ using UnityEngine;
 
 namespace UI
 {
-    public class HUD_Lives : HUDText
+    /// <summary>
+    /// Displays the number of lives (health) the player has remaining.
+    /// </summary>
+    public class HUD_Lives : UIText
     {
         //inspector parameters
         [SerializeField] private Health playerLives = null; //Health can be used as "lives" by letting each health point mean one life

@@ -5,7 +5,10 @@ using UnityEngine;
 
 namespace Game
 {
-    public class AoEBlastAbility : GameObjectAction
+    /// <summary>
+    /// Creates an area-of-effect blast
+    /// </summary>
+    public class AoEBlastAction : GameObjectAction
     {
         //inspector
         [SerializeField] private GameObject aoeObject = null;
@@ -28,7 +31,6 @@ namespace Game
             if(currObj == null && AmmoRemaining > 0)
             {
                 currObj = Instantiate(aoeObject, obj.transform.position, aoeObject.transform.rotation).GetComponent<AoEBlast>();
-                currObj.SetFollowTarget(obj);
                 currObj.Killed += OnDestroyed;
                 AmmoRemaining--;
                 ObjCreated?.Invoke();

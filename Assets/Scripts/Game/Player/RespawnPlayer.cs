@@ -3,6 +3,9 @@ using UnityEngine;
 
 namespace Game
 {
+    /// <summary>
+    /// Respawns the player when its health (lives) decreases.
+    /// </summary>
     [RequireComponent(typeof(PlayerHealth))]
     public class RespawnPlayer : MonoBehaviour
     {

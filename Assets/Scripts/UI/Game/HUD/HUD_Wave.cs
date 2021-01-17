@@ -3,7 +3,10 @@ using UnityEngine;
 
 namespace UI
 {
-    public class HUD_Wave : HUDText
+    /// <summary>
+    /// Displays the current wave.
+    /// </summary>
+    public class HUD_Wave : UIText
     {
         [SerializeField] private WaveManager waveManager = null;
 

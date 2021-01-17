@@ -4,13 +4,16 @@ using UnityEngine;
 
 namespace UI
 {
-    public class HUD_AoEBlast : HUDText
+    /// <summary>
+    /// Displays the remaining ammo for the AoE blast ability
+    /// </summary>
+    public class HUD_AoEBlast : UIText
     {
-        AoEBlastAbility aoeAbility;
+        AoEBlastAction aoeAbility;
 
         private void Start()
         {
-            aoeAbility = FindObjectOfType<AoEBlastAbility>();
+            aoeAbility = FindObjectOfType<AoEBlastAction>();
             aoeAbility.ObjCreated += UpdateText;
             UpdateText(); //draw text initially
         }

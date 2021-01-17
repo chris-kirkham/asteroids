@@ -124,9 +124,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6a1491079d91f742ae7fd3dae7dca61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  time: 3
-  health: 3
-  growSpeed: 200
+  time: 2
+  growSpeed: 500
 --- !u!114 &-336492618594555664
 MonoBehaviour:
   m_ObjectHideFlags: 0

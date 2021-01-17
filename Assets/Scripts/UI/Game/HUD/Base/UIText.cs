@@ -6,14 +6,14 @@ using UnityEngine;
 namespace UI
 {
     /// <summary>
-    /// Abstract base class for HUD text.
+    /// Abstract base class for UI text (which uses TextMeshPro).
     /// </summary>
     [RequireComponent(typeof(TextMeshPro))]
-    public abstract class HUDText : MonoBehaviour
+    public abstract class UIText : MonoBehaviour
     {
         protected TextMeshPro text;
 
-        private void Awake()
+        protected virtual void Awake()
         {
             text = GetComponent<TextMeshPro>();
         }

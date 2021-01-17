@@ -31,13 +31,11 @@ namespace Game
 
         private void OnEnable()
         {
-            //subscribe split function to kill event
             health.Killed += Split;
         }
 
         private void OnDisable()
         {
-            //unsubscribe split function from kill event
             health.Killed -= Split;
         }
 

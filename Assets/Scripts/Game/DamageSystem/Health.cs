@@ -3,6 +3,9 @@ using UnityEngine;
 
 namespace Game
 {
+    /// <summary>
+    /// Manages the health of a GameObject; handles damage taken.
+    /// </summary>
     public class Health : MonoBehaviour, IDamageable, IKillable
     {
         //inspector parameters
@@ -38,6 +41,7 @@ namespace Game
                 currHealth -= damage;
                 TookDamage?.Invoke();
                 TookNDamage?.Invoke(damage);
+                if (currHealth <= 0) Kill();
             }
         }
 

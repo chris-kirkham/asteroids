@@ -1,12 +1,18 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System;
 using UnityEngine;
 
 namespace Game
 {
+    /// <summary>
+    /// Watches the player's health, and triggers a game over event when it reaches zero.
+    /// </summary>
     public class GameOverManager : MonoBehaviour
     {
-        [SerializeField] private PlayerHealth playerHealth;
+        //inspector
+        [SerializeField] private PlayerHealth playerHealth = null;
+
+        //events
+        public event Action GameOver; 
 
         private void OnEnable()
         {
@@ -30,7 +36,7 @@ namespace Game
 
         private void DoGameOver()
         {
-            Debug.Log("GAME OVER!!!!");
+            GameOver?.Invoke();
         }
     }
 }

@@ -6,7 +6,6 @@ namespace Game
 {
     /// <summary>
     /// The actions (e.g. firing a weapon) the player can perform. Actions are represented by action objects, which can be set via the inspector. 
-    /// To be attached to a player's GameObject.
     /// </summary>
     [RequireComponent(typeof(PlayerInput))]
     public class PlayerActions : MonoBehaviour

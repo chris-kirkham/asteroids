@@ -3,6 +3,9 @@ using UnityEngine;
 
 namespace Game
 {
+    /// <summary>
+    /// Health variant which automatically destroys the attached object when it is killed - intended for asteroids 
+    /// </summary>
     public class AsteroidHealth : Health
     {
         public override void TakeDamage(int damage)
