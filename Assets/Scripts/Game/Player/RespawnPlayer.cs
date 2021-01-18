@@ -33,8 +33,11 @@ namespace Game
 
         private void Respawn()
         {
-            transform.position = spawnPosition;
-            playerLives.MakeInvulnerableForNSeconds(invulnTime);
+            if(playerLives.GetCurrentHealth() > 0) //don't respawn if player has lost all lives (health)
+            {
+                transform.position = spawnPosition;
+                playerLives.MakeInvulnerableForNSeconds(invulnTime);
+            }
         }
     }
 }

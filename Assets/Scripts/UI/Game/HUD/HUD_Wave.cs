@@ -22,7 +22,7 @@ namespace UI
 
         private void UpdateText(int currWave)
         {
-            text.SetText("Wave " + currWave);
+            text.SetText("Wave " + (currWave + 1)); //add one to wave because current wave tracker is zero-indexed, but the UI should start at 1
         }
     }
 }

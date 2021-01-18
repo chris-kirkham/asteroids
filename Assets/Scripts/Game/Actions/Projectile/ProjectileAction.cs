@@ -7,20 +7,26 @@ namespace Game
     /// <summary>
     /// An action representing the firing of a projectile.
     /// </summary>
+    [RequireComponent(typeof(ObjectPool))]
     public class ProjectileAction : GameObjectAction
     {
+        //components
+        private ObjectPool pool;
+        
         //inspector parameters
         [Tooltip("The cooldown time between projectile launches, in seconds.")]
         [SerializeField] [Min(0)] private float fireCooldown = 0;
-        
+
         [Tooltip("The projectile GameObject, to be instantiated on firing the projectile.")]
-        [SerializeField] private GameObject projectileObject = null;
+        [SerializeField] private PoolMember projectile = null;
 
         //private variables
         private float previousFireTime;
 
         private void Awake()
         {
+            pool = GetComponent<ObjectPool>();
+            pool.PooledObj = projectile;
             previousFireTime = -fireCooldown; //allows projectile to be fired immediately on startup
         }
 
@@ -28,9 +34,9 @@ namespace Game
         public override void Execute(GameObject obj)
         {
             float currTime = Time.timeSinceLevelLoad;
-            if(currTime - previousFireTime > fireCooldown)
+            if (currTime - previousFireTime > fireCooldown)
             {
-                Instantiate(projectileObject, obj.transform.position, obj.transform.rotation);
+                pool.SpawnFromPool(obj.transform.position, obj.transform.rotation);
                 previousFireTime = currTime;
             }
         }

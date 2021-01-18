@@ -28,6 +28,5 @@ namespace Game
         {
             Victory?.Invoke();
         }
-
     }
 }

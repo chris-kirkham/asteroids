@@ -70,9 +70,9 @@
     <Compile Include="Assets\Scripts\Game\Actions\GameObjectAction.cs" />
     <Compile Include="Assets\Scripts\Game\Actions\Projectile\Projectile.cs" />
     <Compile Include="Assets\Scripts\Game\Actions\Projectile\ProjectileAction.cs" />
-    <Compile Include="Assets\Scripts\Game\Actions\Projectile\ProjectileActionPooled.cs" />
-    <Compile Include="Assets\Scripts\Game\Actions\Projectile\ProjectilePooled.cs" />
     <Compile Include="Assets\Scripts\Game\Actions\Projectile\ProjectileVFX.cs" />
+    <Compile Include="Assets\Scripts\Game\Common\Pooling\ObjectPool.cs" />
+    <Compile Include="Assets\Scripts\Game\Common\Pooling\PoolMember.cs" />
     <Compile Include="Assets\Scripts\Game\Common\ScreenWrap.cs" />
     <Compile Include="Assets\Scripts\Game\DamageSystem\DamageOnCollision.cs" />
     <Compile Include="Assets\Scripts\Game\DamageSystem\Damager.cs" />

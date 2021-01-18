@@ -42,7 +42,7 @@ namespace UI
         //displays the wave text for the set time, then hides it.
         private IEnumerator DisplayNewWaveHeaderCoroutine(int currWave)
         {
-            text.SetText("Wave " + currWave);
+            text.SetText("Wave " + (currWave + 1)); //add 1 to make UI 1-indexed (current wave tracker is zero-indexed)
             yield return new WaitForSeconds(textDisplayTime);
             text.SetText("");
         }

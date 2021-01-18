@@ -21,8 +21,18 @@ namespace Game
 
         private void OnTriggerEnter(Collider other)
         {
+            Damage(other);
+        }
+
+        private void OnTriggerStay(Collider other)
+        {
+            Damage(other);
+        }
+
+        private void Damage(Collider other)
+        {
             //check if the colliding object has one of the Damager's damage tags; damage if so
-            foreach(string canDamageTag in damager.TagsToDamage)
+            foreach (string canDamageTag in damager.TagsToDamage)
             {
                 if (other.gameObject.CompareTag(canDamageTag))
                 {
@@ -30,7 +40,6 @@ namespace Game
                     break;
                 }
             }
-            
         }
     }
 }
