@@ -28,7 +28,7 @@ namespace Game
 
         private void Awake()
         {
-            allowPlayerControl = true;
+            EnablePlayerControl();
             playerHealth = GetComponent<PlayerHealth>();
             InitActionInputs();
         }
@@ -74,7 +74,7 @@ namespace Game
         {
             allowPlayerControl = false;
             
-            //reset all inputs, just in case
+            //reset all inputs
             ThrustInput = 0;
             TurnInput = 0;
             for (int i = 0; i < ActionInputs.Count; i++)
